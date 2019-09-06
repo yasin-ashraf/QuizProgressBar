@@ -10,6 +10,8 @@ import kotlinx.android.synthetic.main.quiz_progress_view.view.*
 class QuizProgress @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : ConstraintLayout(context, attrs, defStyleAttr) {
 
+    private var quizSteps: Int = 0
+
     init {
         init(attrs)
     }
@@ -19,7 +21,7 @@ class QuizProgress @JvmOverloads constructor(
         val ta = context.obtainStyledAttributes(attrs, R.styleable.QuizProgress)
         try {
             val initialProgress = ta.getInt(R.styleable.QuizProgress_initial_progress,0)
-            val quizSteps = ta.getInt(R.styleable.QuizProgress_quiz_steps,20)
+            quizSteps = ta.getInt(R.styleable.QuizProgress_quiz_steps,20)
             progress.progress = initialProgress
             progress.max = quizSteps
             progress_count.text = initialProgress.toString()
@@ -30,7 +32,7 @@ class QuizProgress @JvmOverloads constructor(
     }
 
     fun setProgress(progressNow : Int) {
-        require(progressNow < 21) { "Progress should be less than 20" }
+        require(progressNow <= quizSteps) { "Progress should be less than $quizSteps" }
         progress.progress = progressNow
         progress_count.text = progressNow.toString()
         if(progressNow > 9) progress_count.setTextColor(Color.parseColor("#FFFFFF"))

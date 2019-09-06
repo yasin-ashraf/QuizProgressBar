@@ -1,5 +1,6 @@
 package com.example.customprogressbar
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         quiz_progress.setProgress(2)
         Handler().postDelayed({
             quiz_progress.setProgress(16)
+            startActivity(Intent(this,NewActivity::class.java))
         },4000)
     }
 }
