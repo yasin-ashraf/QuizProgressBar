@@ -34,6 +34,5 @@ class QuizProgress @JvmOverloads constructor(
         progress.progress = progressNow
         progress_count.text = progressNow.toString()
         if(progressNow > 9) progress_count.setTextColor(Color.parseColor("#FFFFFF"))
-        invalidate()
     }
 }
