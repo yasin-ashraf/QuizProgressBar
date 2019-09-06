@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="QuizProgress">
+        <attr format="integer" name="initial_progress"/>
+        <attr format="integer" name="quiz_steps"/>
+    </declare-styleable>
+</resources>
